@@ -1,0 +1,556 @@
+{
+  "info": {
+    "name": "Library Management System API",
+    "description": "Complete API collection for Library Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "User Signup",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\",\n  \"number\": \"9876543210\",\n  \"state\": \"Maharashtra\",\n  \"city\": \"Mumbai\",\n  \"address\": \"123 Main Street\",\n  \"gender\": \"Male\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/signup",
+              "host": ["{{base_url}}"],
+              "path": ["users", "signup"]
+            }
+          }
+        },
+        {
+          "name": "User Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/login",
+              "host": ["{{base_url}}"],
+              "path": ["users", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/users/profile",
+              "host": ["{{base_url}}"],
+              "path": ["users", "profile"]
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Updated\",\n  \"number\": \"9988776655\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["users", "{{user_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Library",
+      "item": [
+        {
+          "name": "Get All Libraries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/librarys",
+              "host": ["{{base_url}}"],
+              "path": ["librarys"]
+            }
+          }
+        },
+        {
+          "name": "Get Single Library",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/librarys/{{library_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["librarys", "{{library_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Search Libraries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/librarys/search?q=Mumbai",
+              "host": ["{{base_url}}"],
+              "path": ["librarys", "search"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Mumbai"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Find Nearest Libraries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/librarys/nearby?latitude=19.0760&longitude=72.8777&radius=5",
+              "host": ["{{base_url}}"],
+              "path": ["librarys", "nearby"],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "19.0760"
+                },
+                {
+                  "key": "longitude",
+                  "value": "72.8777"
+                },
+                {
+                  "key": "radius",
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Library Pricing",
+      "item": [
+        {
+          "name": "Get Pricing Plans by Library",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/library-price/library/{{library_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["library-price", "library", "{{library_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Library Features",
+      "item": [
+        {
+          "name": "Get Features by Library",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/library-feature/library/{{library_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["library-feature", "library", "{{library_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sheets",
+      "item": [
+        {
+          "name": "Get Sheets by Library",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/sheets/library/{{library_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["sheets", "library", "{{library_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bookings",
+      "item": [
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"planId\": \"{{plan_id}}\",\n  \"libraryId\": \"{{library_id}}\",\n  \"sheetId\": \"{{sheet_id}}\",\n  \"userId\": \"{{user_id}}\",\n  \"featureId\": \"{{feature_id}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/bookings/create-order",
+              "host": ["{{base_url}}"],
+              "path": ["bookings", "create-order"]
+            }
+          }
+        },
+        {
+          "name": "Verify Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"razorpay_order_id\": \"{{razorpay_order_id}}\",\n  \"razorpay_payment_id\": \"{{razorpay_payment_id}}\",\n  \"razorpay_signature\": \"{{razorpay_signature}}\",\n  \"bookingData\": {\n    \"planId\": \"{{plan_id}}\",\n    \"libraryId\": \"{{library_id}}\",\n    \"sheetId\": \"{{sheet_id}}\",\n    \"userId\": \"{{user_id}}\",\n    \"featureId\": \"{{feature_id}}\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/bookings/verify-payment",
+              "host": ["{{base_url}}"],
+              "path": ["bookings", "verify-payment"]
+            }
+          }
+        },
+        {
+          "name": "Get All Bookings (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/bookings",
+              "host": ["{{base_url}}"],
+              "path": ["bookings"]
+            }
+          }
+        },
+        {
+          "name": "Get User Bookings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/bookings/user/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["bookings", "user", "{{user_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Extend Booking (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"planId\": \"{{new_plan_id}}\",\n  \"adminId\": \"{{admin_id}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/bookings/extend/{{booking_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["bookings", "extend", "{{booking_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Booking (Admin)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"CANCELLED\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/bookings/{{booking_id}}?adminId={{admin_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["bookings", "{{booking_id}}"],
+              "query": [
+                {
+                  "key": "adminId",
+                  "value": "{{admin_id}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Booking (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/bookings/{{booking_id}}?adminId={{admin_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["bookings", "{{booking_id}}"],
+              "query": [
+                {
+                  "key": "adminId",
+                  "value": "{{admin_id}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Banners",
+      "item": [
+        {
+          "name": "Get All Banners",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/banners",
+              "host": ["{{base_url}}"],
+              "path": ["banners"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Feedback",
+      "item": [
+        {
+          "name": "Submit Feedback",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"{{user_id}}\",\n  \"libraryId\": \"{{library_id}}\",\n  \"rating\": 5,\n  \"message\": \"Great library with excellent facilities!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/feedback",
+              "host": ["{{base_url}}"],
+              "path": ["feedback"]
+            }
+          }
+        },
+        {
+          "name": "Get Library Feedback",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/feedback/library/{{library_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["feedback", "library", "{{library_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Feedback (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/feedback/{{feedback_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["feedback", "{{feedback_id}}"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "admin_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "user_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "admin_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "library_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "plan_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "sheet_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "feature_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "booking_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "feedback_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "razorpay_order_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "razorpay_payment_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "razorpay_signature",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "new_plan_id",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
