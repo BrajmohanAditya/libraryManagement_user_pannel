@@ -56,46 +56,46 @@ import { DashboardModule } from './dashboard/dashboard.module';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    // consumer
-    //   .apply(AuthMiddleware)
-    //   .exclude(
-    //     {
-    //       path: 'users/login',
-    //       method: RequestMethod.POST,
-    //     },
-    //     {
-    //       path: 'users/signup',
-    //       method: RequestMethod.POST,
-    //     },
-    //     {
-    //       path: '/',
-    //       method: RequestMethod.GET,
-    //     },
-    //     {
-    //       path: 'banner',
-    //       method: RequestMethod.GET,
-    //     },
-    //     {
-    //       path: 'dashboard',
-    //       method: RequestMethod.GET,
-    //     },
-    //     {
-    //       path: 'librarys',
-    //       method: RequestMethod.GET,
-    //     },
-    //     {
-    //       path: 'librarys/(.*)',
-    //       method: RequestMethod.GET,
-    //     },
-    //     {
-    //       path: '/feedback/(.*)',
-    //       method: RequestMethod.GET,
-    //     },
-    //     {
-    //       path: '/sheets/(.*)',
-    //       method: RequestMethod.GET,
-    //     }
-    //   )
-    //   .forRoutes('*');
+    consumer
+      .apply(AuthMiddleware)
+      .exclude(
+        {
+          path: 'users/login',
+          method: RequestMethod.POST,
+        },
+        {
+          path: 'users/signup',
+          method: RequestMethod.POST,
+        },
+        {
+          path: '/',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'banner',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'dashboard',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'librarys',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'librarys/(.*)',
+          method: RequestMethod.GET,
+        },
+        {
+          path: '/feedback/(.*)',
+          method: RequestMethod.GET,
+        },
+        {
+          path: '/sheets/(.*)',
+          method: RequestMethod.GET,
+        }
+      )
+      .forRoutes('*');
   }
 }
