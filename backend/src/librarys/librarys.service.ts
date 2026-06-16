@@ -34,6 +34,7 @@ export class LibrarysService {
   async findOne(id: string) {
     const data = await this.libraryRepository.findOne({
       where: { id },
+       relations: ['pricingPlans', 'features'],
     });
 
     return {

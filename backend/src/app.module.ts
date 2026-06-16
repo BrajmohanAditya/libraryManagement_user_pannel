@@ -87,6 +87,10 @@ export class AppModule implements NestModule {
           path: 'librarys/(.*)',
           method: RequestMethod.GET,
         },
+        {
+          path: '/feedback/(.*)',
+          method: RequestMethod.GET,
+        }
       )
       .forRoutes('*');
   }
