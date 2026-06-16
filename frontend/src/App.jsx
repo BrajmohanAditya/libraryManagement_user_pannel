@@ -9,8 +9,8 @@ function App() {
     <>
       {/* <div><MainRoutes/></div> */}
          {/* <DashboardDataViewer /> */}
-          {/* <LibraryDetailViewer /> */}
-          <ReviewDataViewer />
+          <LibraryDetailViewer />
+          {/* <ReviewDataViewer /> */}
     </>
   )
 }
