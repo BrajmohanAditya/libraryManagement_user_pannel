@@ -51,4 +51,9 @@ findNearestLibraries(
     Number(limit),
   );
 }
+
+@Get(':id')
+findOne(@Param('id') id: string) {
+  return this.librarysService.findOne(id);
+}
 }
