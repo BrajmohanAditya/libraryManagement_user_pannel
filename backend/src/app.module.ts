@@ -75,6 +75,18 @@ export class AppModule implements NestModule {
           path: 'banner',
           method: RequestMethod.GET,
         },
+        {
+          path: 'dashboard',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'librarys',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'librarys/(.*)',
+          method: RequestMethod.GET,
+        },
       )
       .forRoutes('*');
   }
